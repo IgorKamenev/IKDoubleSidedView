@@ -22,7 +22,7 @@
     [super viewDidLoad];
 
     self.twoSideView = [[IKDoubleSidedView alloc] initWithFrame:CGRectMake(0, 50, 320, 100)];
-    self.twoSideView.animationType = IKDoubleSidedViewAnimationTypeLeftRight;
+    self.twoSideView.animationType = IKDoubleSidedViewAnimationTypeUpDown;
     self.twoSideView.animationDuration = 0.4;
     self.twoSideView.animationCurve = UIViewAnimationCurveEaseInOut;
 

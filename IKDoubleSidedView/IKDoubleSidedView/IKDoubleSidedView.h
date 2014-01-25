@@ -14,6 +14,9 @@ typedef enum {
     IKDoubleSidedViewAnimationTypeLeft,
     IKDoubleSidedViewAnimationTypeRight,
     IKDoubleSidedViewAnimationTypeLeftRight,
+    IKDoubleSidedViewAnimationTypeUp,
+    IKDoubleSidedViewAnimationTypeDown,
+    IKDoubleSidedViewAnimationTypeUpDown,
 
 } IKDoubleSidedViewType;
 

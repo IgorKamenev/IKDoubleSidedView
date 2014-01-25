@@ -28,6 +28,7 @@ static UIViewAnimationCurve const kDefaultAnimationCurve = UIViewAnimationCurveL
         self.viewOnScreen = 0;
         self.animationDuration = kDefaultAnimationDuration;
         self.animationCurve = kDefaultAnimationCurve;
+        self.clipsToBounds = YES;
 
         self.view1 = [[UIView alloc] initWithFrame:self.bounds];
         [self addSubview:self.view1];
@@ -64,21 +65,13 @@ static UIViewAnimationCurve const kDefaultAnimationCurve = UIViewAnimationCurveL
 {
     NSLog(@"start switching");
     switch (self.animationType) {
-        case IKDoubleSidedViewAnimationTypeFade:
-            [self doAnimationFade];
-            break;
-
-        case IKDoubleSidedViewAnimationTypeLeft:
-            [self doAnimationLeft];
-            break;
-
-        case IKDoubleSidedViewAnimationTypeRight:
-            [self doAnimationRight];
-            break;
-
-        case IKDoubleSidedViewAnimationTypeLeftRight:
-            [self doAnimationLeftRight];
-            break;
+        case IKDoubleSidedViewAnimationTypeFade: [self doAnimationFade]; break;
+        case IKDoubleSidedViewAnimationTypeLeft: [self doAnimationLeft]; break;
+        case IKDoubleSidedViewAnimationTypeRight: [self doAnimationRight]; break;
+        case IKDoubleSidedViewAnimationTypeLeftRight: [self doAnimationLeftRight]; break;
+        case IKDoubleSidedViewAnimationTypeUp: [self doAnimationUp]; break;
+        case IKDoubleSidedViewAnimationTypeDown: [self doAnimationDown]; break;
+        case IKDoubleSidedViewAnimationTypeUpDown: [self doAnimationUpDown]; break;
 
         default:
             break;
@@ -171,6 +164,82 @@ static UIViewAnimationCurve const kDefaultAnimationCurve = UIViewAnimationCurveL
         [self doAnimationLeft];
     } else {
         [self doAnimationRight];
+    }
+}
+
+- (void) doAnimationUp
+{
+
+    self.view1.alpha = 1.0;
+    self.view2.alpha = 1.0;
+
+    CGRect rect;
+
+    rect = [self viewForSwitching1].frame;
+    rect.origin.x = 0;
+    rect.origin.y = 0;
+    [self viewForSwitching1].frame = rect;
+
+    rect = [self viewForSwitching2].frame;
+    rect.origin.x = 0;
+    rect.origin.y = rect.size.height;
+    [self viewForSwitching2].frame = rect;
+
+    [self animateWithBlock:^{
+
+        CGRect rect = [self viewForSwitching1].frame;
+        rect.origin.y = -rect.size.height;
+        [self viewForSwitching1].frame = rect;
+
+        rect = [self viewForSwitching2].frame;
+        rect.origin.y = 0;
+        [self viewForSwitching2].frame = rect;
+
+    } completion:^{
+        NSLog(@"IKTwoSideViewAnimationTypeUp switching complete");
+    }];
+}
+
+
+- (void) doAnimationDown
+{
+
+    self.view1.alpha = 1.0;
+    self.view2.alpha = 1.0;
+
+    CGRect rect;
+
+    rect = [self viewForSwitching1].frame;
+    rect.origin.x = 0;
+    rect.origin.y = 0;
+    [self viewForSwitching1].frame = rect;
+
+    rect = [self viewForSwitching2].frame;
+    rect.origin.x = 0;
+    rect.origin.y = -rect.size.height;
+    [self viewForSwitching2].frame = rect;
+
+    [self animateWithBlock:^{
+
+        CGRect rect = [self viewForSwitching1].frame;
+        rect.origin.y = rect.size.height;
+        [self viewForSwitching1].frame = rect;
+
+        rect = [self viewForSwitching2].frame;
+        rect.origin.y = 0;
+        [self viewForSwitching2].frame = rect;
+
+    } completion:^{
+        NSLog(@"IKTwoSideViewAnimationTypeDown switching complete");
+    }];
+}
+
+- (void) doAnimationUpDown
+{
+    if (self.viewOnScreen == 0) {
+        [self doAnimationUp];
+    } else {
+        [self doAnimationDown];
     }
 }
 
