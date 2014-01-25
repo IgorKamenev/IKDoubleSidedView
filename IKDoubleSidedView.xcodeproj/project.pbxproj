@@ -21,6 +21,7 @@
 		FB02511218945F5600077B57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0250F418945F5600077B57 /* UIKit.framework */; };
 		FB02511A18945F5600077B57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB02511818945F5600077B57 /* InfoPlist.strings */; };
 		FB02511C18945F5600077B57 /* IKDoubleSidedViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB02511B18945F5600077B57 /* IKDoubleSidedViewTests.m */; };
+		FB02512818945F8B00077B57 /* IKDoubleSidedView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB02512718945F8B00077B57 /* IKDoubleSidedView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		FB02511718945F5600077B57 /* IKDoubleSidedViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IKDoubleSidedViewTests-Info.plist"; sourceTree = "<group>"; };
 		FB02511918945F5600077B57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FB02511B18945F5600077B57 /* IKDoubleSidedViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IKDoubleSidedViewTests.m; sourceTree = "<group>"; };
+		FB02512618945F8B00077B57 /* IKDoubleSidedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKDoubleSidedView.h; sourceTree = "<group>"; };
+		FB02512718945F8B00077B57 /* IKDoubleSidedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKDoubleSidedView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 		FB0250F618945F5600077B57 /* IKDoubleSidedView */ = {
 			isa = PBXGroup;
 			children = (
+				FB02512518945F8B00077B57 /* IKDoubleSidedView */,
 				FB0250FF18945F5600077B57 /* IKAppDelegate.h */,
 				FB02510018945F5600077B57 /* IKAppDelegate.m */,
 				FB02510218945F5600077B57 /* Main.storyboard */,
@@ -150,6 +154,15 @@
 				FB02511818945F5600077B57 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB02512518945F8B00077B57 /* IKDoubleSidedView */ = {
+			isa = PBXGroup;
+			children = (
+				FB02512618945F8B00077B57 /* IKDoubleSidedView.h */,
+				FB02512718945F8B00077B57 /* IKDoubleSidedView.m */,
+			);
+			path = IKDoubleSidedView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB02510118945F5600077B57 /* IKAppDelegate.m in Sources */,
+				FB02512818945F8B00077B57 /* IKDoubleSidedView.m in Sources */,
 				FB0250FD18945F5600077B57 /* main.m in Sources */,
 				FB02510718945F5600077B57 /* IKViewController.m in Sources */,
 			);

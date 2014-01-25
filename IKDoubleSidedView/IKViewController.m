@@ -7,8 +7,11 @@
 //
 
 #import "IKViewController.h"
+#import "IKDoubleSidedView.h"
 
 @interface IKViewController ()
+
+@property (nonatomic, strong) IKDoubleSidedView* twoSideView;
 
 @end
 
@@ -17,13 +20,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    self.twoSideView = [[IKDoubleSidedView alloc] initWithFrame:CGRectMake(0, 50, 320, 100)];
+    self.twoSideView.animationType = IKDoubleSidedViewAnimationTypeLeftRight;
+    self.twoSideView.animationDuration = 0.4;
+    self.twoSideView.animationCurve = UIViewAnimationCurveEaseInOut;
+
+    [self.view addSubview:self.twoSideView];
+
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+
+    [self.view addGestureRecognizer:tap];
 }
 
-- (void)didReceiveMemoryWarning
+- (void) tap
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.twoSideView switchView];
 }
 
 @end
